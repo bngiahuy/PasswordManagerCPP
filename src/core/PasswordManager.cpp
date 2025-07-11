@@ -55,19 +55,18 @@ std::vector<Account> PasswordManager::searchAccounts(const std::string& keyword)
 // Print list of services + usernames (do not print password)
 void PasswordManager::listAccounts() const {
     if (accounts.empty()) {
-        std::cout << "Vault is empty.\n";
+        Logger::info("Vault is empty.");
         return;
     }
 
-    std::cout << "Accounts in vault:\n";
-    std::cout << "Service | Username\n";
+    Logger::info("Accounts in vault:");
+    Logger::info("Service | Username");
     std::cout << "---------------------\n";
     for (const auto& acc : accounts) {
-        std::cout << acc.getServiceName()
-                  << " | " << acc.getUsername() << "\n";
+        Logger::info(acc.getServiceName() + " | " + acc.getUsername());
     }
-    std::cout << "---------------------\n";
-    std::cout << "Total accounts: " << accounts.size() << "\n";
+    Logger::info("---------------------");
+    Logger::info("Total accounts: " + std::to_string(accounts.size()));
 }
 
 const std::vector<Account>& PasswordManager::getAllAccounts() const {

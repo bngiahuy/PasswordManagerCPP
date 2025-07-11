@@ -72,7 +72,7 @@ std::string Crypto::hashSHA256(const std::string &input)
     if (hash_len != SHA256_DIGEST_LENGTH)
     {
         // Đây là một kiểm tra sanity, EVP_sha256() luôn cho ra 32 byte
-        std::cerr << "Error: Unexpected hash length for SHA256." << std::endl;
+        Logger::error("Unexpected hash length for SHA256.");
         exit(1);
     }
 

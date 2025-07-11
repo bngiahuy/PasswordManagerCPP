@@ -1,26 +1,7 @@
 #include "crypto/Crypto.h"
 #include <iostream>
+#include "utils/Utils.hpp"
 
-// Helper function: Convert a string to its hexadecimal representation
-// Used for displaying salts, IVs, and keys in hex format for easier debugging
-std::string toHex(const std::string& input) {
-    std::stringstream ss;
-    for (unsigned char c : input) {
-        ss << std::hex << std::setw(2) << std::setfill('0') << (int)c;
-    }
-    return ss.str();
-}
-
-// Helper function: Convert a hexadecimal string back to binary
-std::string fromHex(const std::string& hex) {
-    std::string result;
-    for (size_t i = 0; i < hex.length(); i += 2) {
-        std::string byteString = hex.substr(i, 2);
-        char byte = static_cast<char>(strtol(byteString.c_str(), nullptr, 16));
-        result.push_back(byte);
-    }
-    return result;
-}
 
 int main() {
     // Test input
