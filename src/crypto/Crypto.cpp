@@ -38,8 +38,8 @@ void handleOpenSSLError()
 
 std::string Crypto::hashSHA256(const std::string &input)
 {
-    // Sử dụng std::unique_ptr để quản lý bộ nhớ của EVP_MD_CTX một cách an toàn
-    // Tự động giải phóng khi ra khỏi scope
+    // Use std::unique_ptr to safely manage the memory of EVP_MD_CTX
+    // Automatically frees when going out of scope
     std::unique_ptr<EVP_MD_CTX, decltype(&EVP_MD_CTX_free)> md_ctx(EVP_MD_CTX_new(), EVP_MD_CTX_free);
 
     if (md_ctx == nullptr)
@@ -47,36 +47,36 @@ std::string Crypto::hashSHA256(const std::string &input)
         handleOpenSSLError();
     }
 
-    // Khởi tạo quá trình băm SHA256
+    // Initialize SHA256 hashing process
     if (1 != EVP_DigestInit_ex(md_ctx.get(), EVP_sha256(), nullptr))
     {
         handleOpenSSLError();
     }
 
-    // Cập nhật dữ liệu đầu vào
+    // Update with input data
     if (1 != EVP_DigestUpdate(md_ctx.get(), input.c_str(), input.length()))
     {
         handleOpenSSLError();
     }
 
-    // Hoàn tất tính toán và lấy giá trị băm
-    unsigned char hash[EVP_MAX_MD_SIZE]; // Kích thước tối đa cho mọi hàm băm
-    unsigned int hash_len;               // Chiều dài thực tế của hash
+    // Finalize and get the hash value
+    unsigned char hash[EVP_MAX_MD_SIZE]; // Maximum size for any hash function
+    unsigned int hash_len;               // Actual length of the hash
 
     if (1 != EVP_DigestFinal_ex(md_ctx.get(), hash, &hash_len))
     {
         handleOpenSSLError();
     }
 
-    // Kiểm tra để đảm bảo đúng kích thước SHA256
+    // Check to ensure correct SHA256 length
     if (hash_len != SHA256_DIGEST_LENGTH)
     {
-        // Đây là một kiểm tra sanity, EVP_sha256() luôn cho ra 32 byte
+        // Sanity check: EVP_sha256() always produces 32 bytes
         Logger::error("Unexpected hash length for SHA256.");
         exit(1);
     }
 
-    // Chuyển đổi giá trị băm (byte array) sang chuỗi hex
+    // Convert hash (byte array) to hex string
     std::stringstream ss;
     for (unsigned int i = 0; i < hash_len; i++)
     {
@@ -182,7 +182,7 @@ std::string Crypto::decrypt(const std::string &ciphertext, const std::string &ke
         std::cerr << "Ciphertext cannot be empty!" << std::endl;
         exit(1);
     }
-    
+
     // Extract IV and ciphertext
     if (ciphertext.size() < 16)
     {
