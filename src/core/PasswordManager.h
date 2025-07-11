@@ -4,7 +4,7 @@
 #include <vector>
 #include <optional>
 #include "Account.h"
-#include "Logger.h"
+#include "utils/Logger.h"
 
 class PasswordManager {
 private:

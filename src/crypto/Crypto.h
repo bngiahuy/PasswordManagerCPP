@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <random>
@@ -6,7 +7,7 @@
 #include <memory>        // For std::unique_ptr
 #include <openssl/evp.h> // For EVP functions
 #include <openssl/err.h> // For error handling in OpenSSL
-#include "Logger.h"
+#include "utils/Logger.h"
 class Crypto
 {
 public:

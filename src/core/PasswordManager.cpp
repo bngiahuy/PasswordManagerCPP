@@ -59,14 +59,14 @@ void PasswordManager::listAccounts() const {
         return;
     }
 
-    Logger::info("Accounts in vault:");
-    Logger::info("Service | Username");
+    std::cout << "Accounts in vault:\n";
+    std::cout << "Service | Username\n";
     std::cout << "---------------------\n";
     for (const auto& acc : accounts) {
-        Logger::info(acc.getServiceName() + " | " + acc.getUsername());
+        std::cout << acc.getServiceName() + " | " + acc.getUsername() + "\n";
     }
-    Logger::info("---------------------");
-    Logger::info("Total accounts: " + std::to_string(accounts.size()));
+    std::cout << "---------------------\n";
+    std::cout << "Total accounts: " + std::to_string(accounts.size()) + "\n";
 }
 
 const std::vector<Account>& PasswordManager::getAllAccounts() const {

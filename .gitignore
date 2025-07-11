@@ -36,3 +36,6 @@
 
 # Vault files
 vault.dat
+
+# Cmake build files
+build/
