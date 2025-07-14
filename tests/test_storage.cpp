@@ -3,8 +3,9 @@
 #include "crypto/Crypto.h"
 #include <iostream>
 
-int main() {
-    std::string filePath = "vault.dat";
+void testStorage()
+{
+    std::string filePath = "stored_data/vault.dat";
     std::string salt = Crypto::generateSalt();
     std::string key = Crypto::deriveKey("master123", salt);
 

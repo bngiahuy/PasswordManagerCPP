@@ -1,7 +1,7 @@
 #include "core/Account.h"
 #include <iostream>
 
-int main() {
+void testAccount() {
     Account acc("Gmail", "huybui@gmail.com", "ENCRYPTED_PWD", "Tài khoản cá nhân");
 
     std::cout << "Service: " << acc.getServiceName() << "\n";

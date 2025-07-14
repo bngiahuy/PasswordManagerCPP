@@ -2,7 +2,7 @@
 #include "crypto/Crypto.h"
 #include <iostream>
 
-int main() {
+void testPasswordManager() {
     std::string salt = Crypto::generateSalt();
     std::string key = Crypto::deriveKey("my_master_password", salt);
 
@@ -25,6 +25,4 @@ int main() {
         std::string decrypted = Crypto::decrypt(facebookAcc->getEncryptedPassword(), key);
         std::cout << "Decrypted password for Facebook with username " << facebookAcc->getUsername() << " is " << decrypted << "\n";
     }
-
-    return 0;
 }
