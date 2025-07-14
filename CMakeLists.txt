@@ -25,6 +25,7 @@ add_executable(PasswordManager
     ${SRC_DIR}/crypto/Crypto.cpp
     ${SRC_DIR}/core/Account.cpp
     ${SRC_DIR}/core/PasswordManager.cpp
+    ${SRC_DIR}/core/AuthManager.cpp
     ${SRC_DIR}/storage/Storage.cpp
     ${SRC_DIR}/cli/Menu.cpp
     ${SRC_DIR}/utils/Logger.cpp

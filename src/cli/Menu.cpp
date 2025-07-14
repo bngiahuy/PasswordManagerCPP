@@ -72,7 +72,10 @@ void Menu::searchAccountsFlow() {
 
     std::cout << "Found:\n";
     for (const auto& acc : results) {
-        std::cout << "- " << acc.getServiceName() << " | " << acc.getUsername() << "\n";
+        std::cout << "Service: " << acc.getServiceName() << "\n";
+        std::cout << "Username: " << acc.getUsername() << "\n";
+        std::cout << "Password: " << Crypto::decrypt(acc.getEncryptedPassword(), encryptionKey) << "\n";
+        std::cout << "Note: " << acc.getNote() << "\n\n";
     }
 }
 

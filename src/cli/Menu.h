@@ -4,16 +4,17 @@
 #include "crypto/Crypto.h"
 #include <string>
 
-class Menu {
+class Menu
+{
 private:
-    PasswordManager& manager;
+    PasswordManager &manager;
     std::string vaultFilePath;
     std::string encryptionKey;
 
 public:
-    Menu(PasswordManager& manager,
-         const std::string& encryptionKey,
-         const std::string& vaultFilePath = "vault.dat");
+    Menu(PasswordManager &manager,
+         const std::string &encryptionKey,
+         const std::string &vaultFilePath = "stored_data/vault.dat");
 
     void displayMainMenu();
     void handleUserChoice(int choice);

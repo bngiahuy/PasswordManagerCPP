@@ -35,7 +35,7 @@
 *.app
 
 # Vault files
-vault.dat
+*.dat
 
 # Cmake build files
 build/
